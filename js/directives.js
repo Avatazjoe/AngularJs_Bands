@@ -17,6 +17,7 @@ bandsApp.directive('bandDirective', function ($sce) {
             bandResult: "=",
             band: "=",
             imgSrc: "=",
+            iconSrc: "=",
             videoUrl: "="
         },
 

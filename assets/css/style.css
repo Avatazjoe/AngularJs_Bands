@@ -1,9 +1,27 @@
-main-container {
-    min-height: 100%;
-    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
-    height: 100%;
-    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+.navbar-default {
+    background-color: transparent;
+    border-color: #e7e7e7;
+    padding: 10px;
 }
-footer, {
-    height: 155px; /* .push must be the same height as .footer */
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #555;
+    background-color: #e7e7e7;
+    border-radius: 25px;
+}
+
+.band-img {
+    padding:20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border:3px solid #eee;
+}
+
+.sub-pic{
+    padding-top:20px;
+    font-style: italic;
 }

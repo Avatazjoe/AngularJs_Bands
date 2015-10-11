@@ -1,19 +1,23 @@
-<h1 class="text-center">{{ band }}</h1>
+<h1 class="text-center"><img ng-src="{{ iconSrc
+    }}" alt="icono de {{ band }}">{{ band }}</h1>
 
 <hr>
 
-<img ng-src="{{ imgSrc }}" alt="{{ band }}" class="img-responsive">
-
-<hr>
+<div class="band-img col-xs-12 col-sm-6">
+    <img ng-src="{{ imgSrc }}" alt="{{ band }}" class="img-responsive">
+    <p class="sub-pic text-center">{{ band }}</p>
+</div>
 
 <div ng-repeat="b in bandResult.query.pages">
+    <div ng-bind-html="b.extract | unsafe"></div>
+</div>
 
-    <p ng-bind-html="b.extract | unsafe"></p>
-    <hr>
-
-    <div class="embed-responsive embed-responsive-16by9">
+<hr>
+<div class="embed">
+    <h2 class="text-center">Una pequeña muestra</h2><br>
+    <div class="embed-responsive embed-responsive-16by9 col-xs-12 col-sm-offset-2 col-sm-8">
         <iframe class="embed-responsive-item" ng-src="{{videoUrl}}"></iframe>
     </div>
-
-
 </div>
+
+

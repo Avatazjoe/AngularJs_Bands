@@ -40,6 +40,8 @@ bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'band
 
     //use formatted band name to ask for band img
     $scope.imgSrc = 'assets/img/' + $scope.band + '.jpg';
+    $scope.iconSrc = 'assets/img/' + $scope.band + '.png';
+    console.log('assets/img/' + $scope.band + '.png');
 
     //object containing embeded video links
     $scope.vid = {'The_Beatles': 'https://www.youtube.com/embed/n6j4TGqVl5g', 'The_Rolling_Stones': 'https://www.youtube.com/embed/u6d8eKvegLI', 'Queen': 'https://www.youtube.com/embed/HgzGwKwLmgM'};
