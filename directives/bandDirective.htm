@@ -2,8 +2,18 @@
 
 <hr>
 
+<img ng-src="{{ imgSrc }}" alt="{{ band }}" class="img-responsive">
+
+<hr>
+
 <div ng-repeat="b in bandResult.query.pages">
 
     <p ng-bind-html="b.extract | unsafe"></p>
+    <hr>
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" ng-src="{{videoUrl}}"></iframe>
+    </div>
+
 
 </div>

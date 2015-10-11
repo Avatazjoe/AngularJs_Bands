@@ -6,17 +6,17 @@ bandsApp.directive('consDirective', function () {
     }
 });
 
-bandsApp.directive('bandDirective', function () {
+bandsApp.directive('bandDirective', function ($sce) {
     return {
         restrict: 'E',
         templateUrl: 'directives/bandDirective.htm',
-        controller: function(){
-
-        },
         scope: {
             bandResult: "=",
-            band: "="
-        }
+            band: "=",
+            imgSrc: "=",
+            videoUrl: "="
+        },
+
     }
 });
 
