@@ -1,7 +1,7 @@
 
 // CONTROLLERS
 
-bandsApp.controller('HeaderController', ['$scope', '$location', function($scope, $location){
+bandsApp.controller('HeaderController', ['$scope', '$location', 'Page', function($scope, $location, Page){
 
     //helps setting active class in header li's
     $scope.isActive = function (viewLocation) {
@@ -10,11 +10,27 @@ bandsApp.controller('HeaderController', ['$scope', '$location', function($scope,
 
 }]);
 
-bandsApp.controller('homeController', function(){});
 
-bandsApp.controller('fooController', function(){});
 
-bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'bandService', '$sce', function($scope, $location, $resource, bandService, $sce) {
+bandsApp.controller('homeController', ['$scope', 'Page', function($scope, Page){
+    //set metadata to default
+    Page.setTitle('Angular Rocks');
+    Page.setKeywords('angular rocks default');
+    Page.setDescription('Esto es la descripción por defecto');
+}]);
+
+
+
+bandsApp.controller('fooController', ['$scope', 'Page', function($scope, Page){
+    //set metadata to default
+    Page.setTitle('Angular Rocks');
+    Page.setKeywords('angular rocks default');
+    Page.setDescription('Esto es la descripción por defecto');
+}]);
+
+
+
+bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'bandService', '$sce', 'Page', function($scope, $location, $resource, bandService, $sce, Page) {
 
     //get path and format band name. Prepare it for ajax call
     $scope.locationPath = function (newLocation) {
@@ -39,7 +55,19 @@ bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'band
     $scope.band = $scope.locationPath().split('_').join(' ')
     //console.log($scope.bandResult);
 
+    //set specific metadata for each band's view
+    Page.setTitle($scope.band);
+    Page.setKeywords('title2');
+    Page.setDescription($scope.bandResult);
+
 }]);
+
+
+//injects page factory on head controller
+bandsApp.controller('MainCtrl',['$scope', 'Page', function ($scope, Page) {
+    $scope.Page = Page;
+}]);
+
 
 
 

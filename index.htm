@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es" ng-app="bandsApp">
-    <head>
-        <title>Angular Rocks</title>
+    <head ng-controller="MainCtrl">
+        <title ng-bind="Page.title()"></title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta charset="UTF-8">
-        <meta description ="Esto es la descripción por defecto">
-        <meta keywords ="angular rocks default">
+
+        <meta description ng-bind="Page.description()">
+        <meta keywords ng-bind="Page.keywords()">
+
 
         <link rel="stylesheet" href="assets/css/bootstrap.css" />
 
@@ -20,6 +22,7 @@
         <script src="js/directives.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/filters.js"></script>
+        <script src="js/factories.js"></script>
 
     </head>
     <body>
@@ -62,11 +65,17 @@
 
         </header>
 
-        <div class="container">
+        <div class="container main-container">
 
             <div ng-view></div>
 
         </div>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted text-right">@Jorge Márquez, 2015</p>
+            </div>
+        </footer>
 
     </body>
 </html>

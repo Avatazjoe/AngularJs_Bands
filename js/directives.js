@@ -1,4 +1,6 @@
 //DIRECTIVES
+
+//under construction pages
 bandsApp.directive('consDirective', function () {
     return {
         restrict: 'E',
@@ -6,6 +8,7 @@ bandsApp.directive('consDirective', function () {
     }
 });
 
+//used in band's views
 bandsApp.directive('bandDirective', function ($sce) {
     return {
         restrict: 'E',
