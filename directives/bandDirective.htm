@@ -1,0 +1,9 @@
+<h1 class="text-center">{{ band }}</h1>
+
+<hr>
+
+<div ng-repeat="b in bandResult.query.pages">
+
+    <p ng-bind-html="b.extract | unsafe"></p>
+
+</div>
