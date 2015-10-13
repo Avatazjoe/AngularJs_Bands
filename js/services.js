@@ -1,38 +1,24 @@
 // SERVICES
 
 //API call service
-bandsApp.service('bandService', ['$resource', '$location', function($resource, $location){
+bandsApp.service('bandService', ['$http', '$q', function($http, $q){
 
-    //initialize an empty array for cache data
-    this.cachedData = {};
+    var Cache = [];
 
-    //API call function
-    this.GetBand = function(band){
+    var getBand = {
 
-        //if requested band cache data exists, return cache data
-        if(this.cachedData[band]){
+        get: function(band) {
 
-            return this.cachedData[band];
-
-        //else, call API, get data, and set band cache data
-        } else{
-
-            //api call
-            var bandApi = $resource("https://es.wikipedia.org/w/api.php", {
-
-                callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
-
-            //define api call params and set a var to result
-            bandApi = bandApi.get({ format:'json', action: 'query', prop: 'extracts', exintro: 'explaintext', titles: band });
-
-            //add result to cache
-            this.cachedData[band] = bandApi;
-
-            //return data
-            return bandApi;
-
+            if(Cache[band]){
+                return Cache[band];
+            } else {
+                Cache[band] = $http.jsonp('http://es.wikipedia.org/w/api.php?titles=' + band + '&rawcontinue=true&action=query&format=json&prop=extracts&callback=JSON_CALLBACK');
+                return Cache[band];
+            }
         }
-
     };
+
+    return getBand;
+
 
 }]);

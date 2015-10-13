@@ -1,5 +1,5 @@
-<h1 class="text-center"><img ng-src="{{ iconSrc
-    }}" alt="icono de {{ band }}">{{ band }}</h1>
+<h1 class="text-center">{{  band }}&nbsp;&nbsp;&nbsp;<img ng-src="{{ iconSrc
+    }}" alt="icono de {{ band }}"></h1>
 
 <hr>
 
@@ -7,6 +7,8 @@
     <img ng-src="{{ imgSrc }}" alt="{{ band }}" class="img-responsive">
     <p class="sub-pic text-center">{{ band }}</p>
 </div>
+
+<!--<p>{{ bandResult.query.pages }}</p>-->
 
 <div ng-repeat="b in bandResult.query.pages">
     <div ng-bind-html="b.extract | unsafe"></div>

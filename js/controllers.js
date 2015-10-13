@@ -41,7 +41,6 @@ bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'band
     //use formatted band name to ask for band img
     $scope.imgSrc = 'assets/img/' + $scope.band + '.jpg';
     $scope.iconSrc = 'assets/img/' + $scope.band + '.png';
-    console.log('assets/img/' + $scope.band + '.png');
 
     //object containing embeded video links
     $scope.vid = {'The_Beatles': 'https://www.youtube.com/embed/n6j4TGqVl5g', 'The_Rolling_Stones': 'https://www.youtube.com/embed/u6d8eKvegLI', 'Queen': 'https://www.youtube.com/embed/HgzGwKwLmgM'};
@@ -49,18 +48,35 @@ bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'band
     //getter for proper video link for each band
     $scope.videoUrl = $sce.trustAsResourceUrl($scope.vid[$scope.band]);
 
-    //call ajax service
-    $scope.bandResult = bandService.GetBand($scope.band);
-
-
     //format band name for display in view
-    $scope.band = $scope.locationPath().split('_').join(' ')
-    //console.log($scope.bandResult);
+    $scope.band = $scope.locationPath().split('_').join(' ');
 
-    //set specific metadata for each band's view
-    Page.setTitle($scope.band);
-    Page.setKeywords('title2');
-    Page.setDescription($scope.bandResult);
+    //call ajax service
+
+    $scope.bandResult= bandService.get($scope.band);
+    bandService.get($scope.band).then(function(data) {
+        var content;
+        var keywords;
+        var desc;
+        var pages = data.data.query.pages;
+        for(key in pages){
+            var content = pages[key].extract;
+            //get first paragraph as meta-description
+            var desc = content.slice(1,content.indexOf("</p>"));
+            //get italic words as keywords
+            var keywords = desc.match(/<i>(.*?)<\/i>/g).map(function(val){
+                return val.replace(/<\/?i>/g,'');
+            });
+            console.log(desc);
+            console.log(keywords);
+        }
+
+        //set specific metadata for each band's view
+        Page.setTitle($scope.band);
+        Page.setKeywords(keywords);
+        Page.setDescription(desc);
+    });
+
 
 }]);
 
