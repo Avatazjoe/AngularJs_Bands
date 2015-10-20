@@ -1,0 +1,28 @@
+<h1 class="text-center">{{  band }}&nbsp;&nbsp;&nbsp;<img ng-src="{{ iconSrc
+    }}" alt="icono de {{ band }}"></h1>
+
+<hr>
+
+  
+<div class="band-img col-xs-12 col-sm-5">
+       
+    <img ng-src="{{ imgSrc }}" alt="{{ band }}" class="img-responsive">
+    <p class="sub-pic text-center">{{ band }}</p>
+        
+            
+</div><!--band-img-->
+    
+    
+<div ng-bind-html="desc | unsafe" class="parraf"></div>
+
+       
+       
+       
+<hr>
+   
+<div class="embed">
+    <h2 class="text-center">Una pequeña muestra</h2><br>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" ng-src="{{videoUrl}}"></iframe>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.navbar-default {
+    background-color: transparent;
+    border-color: #e7e7e7;
+    padding: 10px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #555;
+    background-color: #e7e7e7;
+    border-radius: 25px;
+}
+
+.band-img {
+    padding:20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border:3px solid #eee;
+}
+
+.sub-pic{
+    padding-top:20px;
+    font-style: italic;
+}
+
+.parraf{
+    
+}
+
