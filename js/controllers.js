@@ -50,6 +50,7 @@ bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'band
 
     //format band name for display in view
     $scope.band = $scope.locationPath().split('_').join(' ');
+<<<<<<< HEAD
     
     
     //set variables for data-filtering
@@ -116,6 +117,34 @@ bandsApp.controller('bandController', ['$scope', '$location', '$resource', 'band
     };
 
     callService();
+=======
+
+    //call ajax service
+
+    $scope.bandResult= bandService.get($scope.band);
+    bandService.get($scope.band).then(function(data) {
+        var content;
+        var keywords;
+        var desc;
+        var pages = data.data.query.pages;
+        for(key in pages){
+            var content = pages[key].extract;
+            //get first paragraph as meta-description
+            var desc = content.slice(1,content.indexOf("</p>"));
+            //get italic words as keywords
+            var keywords = desc.match(/<i>(.*?)<\/i>/g).map(function(val){
+                return val.replace(/<\/?i>/g,'');
+            });
+            console.log(desc);
+            console.log(keywords);
+        }
+
+        //set specific metadata for each band's view
+        Page.setTitle($scope.band);
+        Page.setKeywords(keywords);
+        Page.setDescription(desc);
+    });
+>>>>>>> c9b6055ac80716e992c5f7356f0a0d298a715284
 
 
 }]);
